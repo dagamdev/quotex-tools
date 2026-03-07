@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Quotex tools",
+  "version": "1.0.0",
+  "description": "Herramientas para el Broker Quotex basado en binarias",
+  "permissions": ["scripting", "storage", "tabs"],
+  "host_permissions": [
+    "https://qxbroker.com/*"
+  ],
+  "icons": {
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://qxbroker.com/*"
+      ], 
+      "css": [
+        "scripts/styles.css"
+      ],
+      "js": [
+        "utils/constants.js",
+        "utils/variables.js",
+        "utils/chrome.js",
+        "events/load.js",
+        "scripts/DOM.js",
+        "events/load.js",
+        "scripts/content.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

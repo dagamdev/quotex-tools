@@ -1,0 +1,37 @@
+.cleanInterface {
+  .trading-chart__left {
+    display: none !important;
+  }
+
+  .trading-chart-settings {
+    left: 0 !important;
+  }
+
+  .trading-chart__wrapper {
+    padding: 0;
+  }
+
+  .pair-information {
+    display: none;
+  }
+
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc {
+    margin-left: 0;
+  }
+
+  .app__sidebar.---react-features-Sidebar-styles-module__sidebar--kmNSA {
+    display: none;
+  }
+
+  .app.app--sidebar_name-open {
+    padding-left: 0 !important;
+
+    &.app--sidepanel-open {
+      padding-left: 230px !important;
+    }
+  }
+
+  .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH {
+    left: 0;
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotex Tools</title>
+  <script src="../utils/variables.js" defer></script>
+  <script src="../utils/chrome.js" defer></script>
+  <script src="./index.js" defer></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="title-div">
+    <img src="../icon.png" alt="Logo" width="40" height="40">
+    <h1>Quotex Tools</h1>
+  </div>
+
+  <section class="container">
+    <div class="feature">
+      <div class="feature-info">
+        <div class="feature-title">Modo interfaz limpia</div>
+        <div class="feature-desc">
+          Oculta algunos paneles y elementos del broker para dejar el gráfico más limpio.
+        </div>
+      </div>
+
+      <label class="switch">
+        <input type="checkbox" id="cleanInterface">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Feature -->
+    <div class="feature disabled" title="Característica en desarrollo">
+      <div class="feature-info">
+        <div class="feature-title">Expiración al cierre de vela</div>
+        <div class="feature-desc">
+          Ajusta automáticamente el tiempo de expiración al final de la vela actual.
+        </div>
+      </div>
+
+      <label class="switch">
+        <input type="checkbox" id="expirationByCandle" disabled>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </section>
+</body>
+</html>

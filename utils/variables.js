@@ -1,4 +1,5 @@
 let features = {
   cleanInterface: false,
-  expirationByCandle: false
+  expirationByCandle: false,
+  keyboardShortcuts: false
 }

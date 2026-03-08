@@ -25,6 +25,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
+
+  setTimeout(() => {
+    document.body.classList.add('loaded')
+  }, 1000)
 })
 
 document.addEventListener('change', ev => {

@@ -31,16 +31,32 @@
     </div>
 
     <!-- Feature -->
-    <div class="feature disabled" title="Característica en desarrollo">
+    <div class="feature">
       <div class="feature-info">
         <div class="feature-title">Expiración al cierre de vela</div>
         <div class="feature-desc">
-          Ajusta automáticamente el tiempo de expiración al final de la vela actual.
+          Ajusta automáticamente el tiempo de expiración a finalización de vela en 1m.
         </div>
       </div>
 
       <label class="switch">
-        <input type="checkbox" id="expirationByCandle" disabled>
+        <input type="checkbox" id="expirationByCandle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Feature -->
+    <div class="feature">
+      <div class="feature-info">
+        <div class="feature-title">Atajos de teclado para activos</div>
+        <div class="feature-desc">
+          Permite cambiar entre los activos abiertos usando atajos de teclado.
+          Usa <b>Ctrl + 1</b> para ir al primer activo y <b>Ctrl + 2</b> para el segundo etc.
+        </div>
+      </div>
+
+      <label class="switch">
+        <input type="checkbox" id="keyboardShortcuts">
         <span class="slider"></span>
       </label>
     </div>

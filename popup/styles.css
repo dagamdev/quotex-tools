@@ -108,8 +108,11 @@ body{
   right:0;
   bottom:0;
   background:#475569;
-  transition:.3s;
   border-radius:20px;
+}
+
+.loaded .slider {
+  transition:.3s;
 }
 
 .disabled .slider {
@@ -124,8 +127,11 @@ body{
   left:3px;
   bottom:3px;
   background:white;
-  transition:.3s;
   border-radius:50%;
+}
+
+.loaded .slider::before {
+  transition:.3s;
 }
 
 input:checked + .slider{

@@ -7,22 +7,47 @@ function loadEvent () {
     handleCleanInterface()
   })
 
-  // const observer = new MutationObserver(() => {
-  //   if (!ennable) return
+  const observer = new MutationObserver((mutations) => {
+    const switchQuery = '.section-deal__time .input-control__label__switch'
+    let count = 0
 
-  //   const query = 'button.botonAceptar[data-dismiss="modal"]'
-  //   const button = document.querySelector(query)
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (!(node instanceof HTMLElement)) return
 
-  //   if (button) {
-  //     button.click()
-  //     observer.disconnect()
-  //   } else {
-  //     console.log('Boton no encontrado, query: ', query)
-  //   }
-  // })
+        if (features.expirationByCandle) {
+          const switchTime = node.matches?.(switchQuery)
+          ? node
+          : node.querySelector?.(switchQuery)
+          
+          if (switchTime) {
+            count++
 
-  // observer.observe(document.body, {
-  //   childList: true,
-  //   subtree: true
-  // })
+            if (count === 2) {
+              count = 0
+              handleexpirationByCandle()
+            }
+          }
+
+          const input = node.matches?.('.section-deal__time .section-deal__input-control input')
+            ? node
+            : node.querySelector?.('.section-deal__time .section-deal__input-control input')
+
+          if (input) {
+            count++
+
+            if (count === 2) {
+              count = 0
+              handleexpirationByCandle()
+            }
+          }
+        }
+      })
+    })
+  })
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  })
 }

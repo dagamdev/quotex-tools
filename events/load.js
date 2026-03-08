@@ -1,9 +1,6 @@
 function loadEvent () {
-  
   chrome.runtime.sendMessage({ action: 'getFeatures', host }, (response) => {
     features = response.features
-    console.log(features)
-
     handleCleanInterface()
   })
 
@@ -49,5 +46,17 @@ function loadEvent () {
   observer.observe(document.body, {
     childList: true,
     subtree: true
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if (!features.keyboardShortcuts) return
+    e.preventDefault()
+
+    if (isNaN(+e.key) || e.key === '0') return
+
+    const charts = document.querySelectorAll('.---react-pages-TradePage-components-ChartPanel-TopCorner-Tabs-Tab-styles-module__container--xaCSj')
+    const chart = charts.item(+e.key - 1)
+
+    if (chart) chart.click()
   })
 }

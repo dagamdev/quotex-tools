@@ -26,6 +26,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
 
+  const version = chrome.runtime.getManifest().version
+  document.getElementById("version").textContent = "v" + version
+
   setTimeout(() => {
     document.body.classList.add('loaded')
   }, 1000)

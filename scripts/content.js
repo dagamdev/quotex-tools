@@ -1,8 +1,5 @@
 'use strict'
 
-let lastResultTime = '', automationTimeout
-const { host, pathname } = location
-
 console.log('Quotex tools')
 
 window.addEventListener("load", loadEvent)
@@ -15,8 +12,6 @@ function toggleFeature (feature) {
 
   handleCleanInterface()
   handleexpirationByCandle()
-
-  console.log(features)
 }
 
 function handleCleanInterface () {
@@ -34,6 +29,5 @@ async function handleexpirationByCandle () {
   await findAndClick('.section-deal__time .input-control__label__switch')
   await findAndClick('.input-control__dropdown-option')
 
-  console.log(getInputTimeValue())
   handleexpirationByCandle()
 }

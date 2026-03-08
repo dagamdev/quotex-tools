@@ -15,7 +15,6 @@ function getInputTimeValue () {
  */
 async function findAndClick (query) {
   while (true) {
-    console.log('loop: ', query)
     const element = document.querySelector(query)
   
     if (element) {

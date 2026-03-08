@@ -141,3 +141,10 @@ input:checked + .slider{
 input:checked + .slider:before{
   transform:translateX(20px);
 }
+
+footer, #version {
+  margin-top: 16px;
+  font-size: small;
+  color: var(--secondary-text);
+  text-align:center;
+}

@@ -1,7 +1,9 @@
 function loadEvent () {
-  chrome.runtime.sendMessage({ action: 'getFeatures', host }, (response) => {
+  chrome.runtime.sendMessage({ action: 'getFeatures' }, (response) => {
     features = response.features
+
     handleCleanInterface()
+    handleSuperCleanMode()
   })
 
   const observer = new MutationObserver((mutations) => {
@@ -50,9 +52,9 @@ function loadEvent () {
 
   document.addEventListener("keydown", (e) => {
     if (!features.keyboardShortcuts) return
+    
+    if (isNaN(+e.key) || e.key === '0' || !e.ctrlKey) return
     e.preventDefault()
-
-    if (isNaN(+e.key) || e.key === '0') return
 
     const charts = document.querySelectorAll('.---react-pages-TradePage-components-ChartPanel-TopCorner-Tabs-Tab-styles-module__container--xaCSj')
     const chart = charts.item(+e.key - 1)

@@ -60,6 +60,36 @@
         <span class="slider"></span>
       </label>
     </div>
+
+    <!-- Feature -->
+    <div class="feature">
+      <div class="feature-info">
+        <div class="feature-title">Modo super limpio (Backtesting)</div>
+        <div class="feature-desc">
+          Oculta casi todos los paneles del broker dejando solo el gráfico y los activos abiertos. Ideal para análisis o backtesting visual.
+        </div>
+      </div>
+
+      <label class="switch">
+        <input type="checkbox" id="superCleanMode">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Feature -->
+    <div class="feature">
+      <div class="feature-info">
+        <div class="feature-title">Bloqueo en últimos 30s de vela</div>
+        <div class="feature-desc">
+          Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.
+        </div>
+      </div>
+
+      <label class="switch">
+        <input type="checkbox" id="blockLast30sOfCandle">
+        <span class="slider"></span>
+      </label>
+    </div>
   </section>
 
   <footer><span id="version">v1.0.0</span> • by Dagamdev</footer>

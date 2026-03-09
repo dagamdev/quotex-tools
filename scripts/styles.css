@@ -1,4 +1,4 @@
-.cleanInterface {
+.cleanInterface, .superCleanMode {
   .trading-chart__left {
     display: none !important;
   }
@@ -35,3 +35,14 @@
     left: 0;
   }
 }
+
+.superCleanMode {
+  .page__sidebar, .page__header {
+    display: none;
+  }
+
+  .page__body {
+    max-height: 100vh !important;
+  }
+}
+

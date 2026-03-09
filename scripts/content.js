@@ -12,6 +12,7 @@ function toggleFeature (feature) {
 
   handleCleanInterface()
   handleexpirationByCandle()
+  handleSuperCleanMode()
 }
 
 function handleCleanInterface () {
@@ -30,4 +31,12 @@ async function handleexpirationByCandle () {
   await findAndClick('.input-control__dropdown-option')
 
   handleexpirationByCandle()
+}
+
+function handleSuperCleanMode () {
+  if (features.superCleanMode) {
+    document.body.classList.add('superCleanMode')
+  } else {
+    document.body.classList.remove('superCleanMode')
+  }
 }

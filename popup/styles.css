@@ -1,14 +1,43 @@
 * {
-  color-scheme: dark light;
+  /* color-scheme: dark light; */
   margin: 0;
   font-size: medium;
 
-  --accent: #1c1f2d;
-  --secondary: #303140;
   --green: #0faf59;
   --white: #e2e8f0;
+}
+
+.light {
+  --bg-color: #d4d4d4;
+  --bg-secondary: #fafafa;
+  --secondary-text: #616161;
+  --hover: #e4e4e4;
+  color: #353a4d;
+  --border: #4d4d4d;
+}
+
+.dark {
+  --bg-color: #373d56;
+  --bg-secondary: #2b3040;
   --secondary-text: #a0a0a0;
   --hover: #282935;
+  --border: #ffffff4d;
+}
+
+.black {
+  --bg-color: #1c1f2d;
+  --bg-secondary: #2b3040;
+  --secondary-text: #a0a0a0;
+  --hover: #282935;
+  --border: #ffffff4d;
+}
+
+.deepDarkMode {
+  --bg-color: #1a1a1a;
+  --bg-secondary: #222222;
+  --secondary-text: #a0a0a0;
+  --hover: #0a0a0a;
+  --border: #333;
 }
 
 html {
@@ -46,7 +75,7 @@ body{
 
 body{
   font-family: Arial, sans-serif;
-  background: var(--accent);
+  background: var(--bg-color);
   margin:0;
   padding:16px;
   color: var(--white);
@@ -64,7 +93,7 @@ body{
   justify-content:space-between;
   align-items:center;
   padding: 14px;
-  background: var(--secondary);
+  background: var(--bg-secondary);
   box-shadow: 2px 2px 6px rgba(53, 58, 77, .2);
   border-radius:8px;
   transition: all .2s;
@@ -75,7 +104,7 @@ body{
 
 
   &.disabled {
-    background: #22232e;
+    opacity: .5;
     cursor: not-allowed !important;
   }
 }
@@ -117,7 +146,7 @@ body{
   left:0;
   right:0;
   bottom:0;
-  background:#475569;
+  background: var(--border);
   border-radius:20px;
 }
 
@@ -140,7 +169,7 @@ body{
   border-radius:50%;
 }
 
-.loaded .slider::before {
+.slider::before {
   transition:.3s;
 }
 

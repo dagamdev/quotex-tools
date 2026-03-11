@@ -46,3 +46,51 @@
   }
 }
 
+.priceNotificationNavigation {
+  .notification-tracked-value {
+    cursor: pointer;
+  }
+}
+
+.deepDarkMode {
+  --bg-color: #1a1a1a;
+  --border: #333;
+  --bg-secondary: #222222;
+  --hover-color: #0a0a0a;
+
+  --sidebar-bg-color: var(--bg-color);
+  --page-bg-color-0: var(--bg-color);
+  --page-bg-color-100: #161616;
+  --sidepanel-bg-dark: var(--bg-color);
+
+  --sidebar-bg-button: var(--bg-secondary);
+  --sidebar-bg-section: var(--bg-secondary);
+  --deal-list-bg: var(--bg-secondary);
+  --graph-tab-bg: var(--bg-secondary);
+  --graph-tab-fixed-bg: var(--bg-secondary);
+  --usermenu-bg: var(--bg-secondary);
+  --header-notifications-bg: var(--bg-secondary);
+  --deal-list-tab-bg-active: var(--bg-secondary);
+  
+  --header-notifications-bg-hover: var(--hover-color);
+  --graph-tab-bg-active: var(--hover-color);
+  --usermenu-bg-hover: var(--hover-color);
+  --usermenu-bg-dropdown: var(--hover-color);
+  --sidebar-bg-button-hover: var(--hover-color);
+  
+  --graph-tab-border: var(--border);
+  --graph-tab-bg-hover: var(--border);
+  --deal-list-tabs-bg: var(--border);
+
+  --graph-tab-box-shadow: -6px 0px 6px #0f0f0f;
+  --chart-bg-button: hsla(0, 0%, 100%, .05);
+
+
+  .app {
+    background-color: var(--bg-color) !important;
+  }
+
+  .---react-features-Sidepanel-Settings-Theme-Item-styles-module__slider--dBWCu {
+    cursor: not-allowed;
+  }
+}

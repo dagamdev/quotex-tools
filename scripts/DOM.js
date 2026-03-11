@@ -12,17 +12,23 @@ function getInputTimeValue () {
 /**
  * 
  * @param {String} query 
+ * @param {Number?} attempts
+ * @param {Number?} index
  */
-async function findAndClick (query) {
-  while (true) {
-    const element = document.querySelector(query)
+async function findAndClick (query, attempts, index) {
+  let count = 0
+  
+  while (attempts ? count < attempts : typeof attempts === 'undefined') {
+    const element = index ? document.querySelectorAll(query)?.[index] : document.querySelector(query)
   
     if (element) {
       element.click()
-      console.log('elemento: ', element)
       return element
     }
     
     await new Promise(resolve => setTimeout(resolve, 500))
+    if (attempts) {
+      count++
+    }
   }
 }

@@ -24,6 +24,7 @@ function handleCleanInterface () {
 }
 
 async function handleexpirationByCandle () {
+  if (!features.expirationByCandle) return
   const inputValue = getInputTimeValue()
   if (inputValue && inputValue.length < 6) return
 

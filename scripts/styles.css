@@ -23,7 +23,7 @@
     display: none;
   }
 
-  .app.app--sidebar_name-open {
+  .app.app--fixed {
     padding-left: 0 !important;
 
     &.app--sidepanel-open {

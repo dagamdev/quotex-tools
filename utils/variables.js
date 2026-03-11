@@ -21,11 +21,6 @@ const features = {
     inDevelopment: false,
     requireClass: true
   },
-  blockLast30sOfCandle: {
-    name: 'Bloqueo en últimos 30s de vela',
-    description: 'Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.',
-    inDevelopment: true
-  },
   priceNotificationNavigation: {
     name: 'Navegar desde notificaciones',
     description: 'Permite hacer clic en las notificaciones de precio para abrir automáticamente el activo donde se generó la alerta.',
@@ -38,10 +33,24 @@ const features = {
     inDevelopment: false,
     requireClass: true
   }
+  // blockLast30sOfCandle: {
+  //   name: 'Bloqueo en últimos 30s de vela',
+  //   description: 'Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.',
+  //   inDevelopment: true
+  // },
 }
+
+/**
+ * @type {[keyof typeof features]}
+ */
+const featureKeys = Object.keys(features)
 
 /** @type {{ [K in keyof typeof features]: boolean }} */
 let featureStates = {}
 
+featureKeys.forEach(key => {
+  featureStates[key] = false
+})
+
 /** @type {'light' | 'dark' | 'black'} */
-let theme
+let theme = 'black'

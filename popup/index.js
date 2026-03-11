@@ -4,20 +4,17 @@ let tab
 const hosts = [
   'https://qxbroker.com'
 ]
-const featureKeys = Object.keys(features)
 
 chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
   tab = tabs[0]
 
   localStorageGet(['featureStates', 'theme'], (result) => {
     if (result.featureStates) featureStates = result.featureStates
-    featureStates = result.featureStates
-    theme = result.theme
+    theme = result.theme || 'black'
 
     const container = document.querySelector('.container')
     featureKeys.forEach(key => {
-      const value = featureStates[key] ?? false
-      features[key].enabled = value
+      const value = featureStates[key]
       const feature = features[key]
       
       container.insertAdjacentHTML('beforeend', 

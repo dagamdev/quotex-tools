@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Quotex tools",
-  "version": "2.4.4",
+  "version": "2.5.4",
   "description": "Herramientas para el Broker Quotex basado en binarias",
   "permissions": ["scripting", "storage", "tabs"],
   "host_permissions": [
@@ -23,6 +23,7 @@
       ],
       "js": [
         "utils/constants.js",
+        "utils/handlers.js",
         "utils/variables.js",
         "utils/functions.js",
         "utils/chrome.js",

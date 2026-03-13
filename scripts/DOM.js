@@ -15,13 +15,15 @@ function getInputTimeValue () {
  * @param {Number?} attempts
  * @param {Number?} index
  */
-async function findAndClick (query, attempts, index) {
+async function findAndClick (query, attempts = 1000, index) {
   let count = 0
   
   while (attempts ? count < attempts : typeof attempts === 'undefined') {
+    // console.log(query)
     const element = index ? document.querySelectorAll(query)?.[index] : document.querySelector(query)
   
     if (element) {
+      // console.log(element)
       element.click()
       return element
     }

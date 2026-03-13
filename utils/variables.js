@@ -1,3 +1,16 @@
+/**
+ * @typedef {Object} Feature
+ * @property {string} name
+ * @property {string} description
+ * @property {boolean} inDevelopment
+ * @property {boolean} [requireClass]
+ */
+
+/**
+ * @typedef {'cleanInterface' | 'expirationByCandle' | 'keyboardShortcuts' | 'superCleanMode' | 'priceNotificationNavigation' | 'deepDarkMode' | 'timeframeHotkeys'} FeatureKeys
+ */
+
+/** @type {Record<FeatureKeys, Feature>} */
 const features = {
   cleanInterface: {
     name: 'Modo interfaz limpia',
@@ -32,6 +45,15 @@ const features = {
     description: 'Aplica un tema aún más oscuro al broker para reducir el brillo y mejorar la concentración durante el trading.',
     inDevelopment: false,
     requireClass: true
+  },
+  hideMarketSentiment: {
+    name: "Ocultar sentimiento del mercado",
+    description: "Oculta la barra vertical que muestra el porcentaje de traders en cada dirección.",
+    requireClass: true
+  },
+  timeframeHotkeys: {
+    name: 'Atajos para temporalidades',
+    description: 'Permite cambiar la temporalidad del gráfico usando atajos de teclado. Usa <b>Alt + 1</b> para ir a 5s <b>Ctrl + 2</b> para 10s, etc.'
   }
   // blockLast30sOfCandle: {
   //   name: 'Bloqueo en últimos 30s de vela',
@@ -54,3 +76,5 @@ featureKeys.forEach(key => {
 
 /** @type {'light' | 'dark' | 'black'} */
 let theme = 'black'
+
+let prevDeepDarkMode = false

@@ -15,7 +15,7 @@
     display: none;
   }
 
-  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc {
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .trading-chart__indicators {
     margin-left: 0;
   }
 
@@ -43,6 +43,24 @@
 
   .page__body {
     max-height: 100vh !important;
+  }
+}
+
+.hideMarketSentiment {
+  .trading-chart__left {
+    display: none;
+  }
+
+  .trading-chart__wrapper {
+    padding: 0;
+  }
+
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .pair-information, .trading-chart__indicators {
+    margin-left: 0;
+  }
+
+  .trading-chart-settings {
+    left: 0 !important;
   }
 }
 

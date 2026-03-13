@@ -68,10 +68,10 @@ document.addEventListener('change', ev => {
 
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        function(featureKey) {
-          toggleFeature(featureKey)
+        function(featureName, isActive) {
+          toggleFeature(featureName, isActive)
         },
-        args: [id]
+        args: [id, newValue]
       })
     })
   }

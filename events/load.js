@@ -1,5 +1,5 @@
 function loadEvent () {
-  iniallice()
+  initialice()
 
   const observer = new MutationObserver((mutations) => {
     const switchQuery = '.section-deal__time .input-control__label__switch'
@@ -9,33 +9,33 @@ function loadEvent () {
       mutation.addedNodes.forEach(node => {
         if (!(node instanceof HTMLElement)) return
 
-        if (featureStates.expirationByCandle) {
-          const switchTime = node.matches?.(switchQuery)
-          ? node
-          : node.querySelector?.(switchQuery)
+        // if (featureStates.expirationByCandle) {
+        //   const switchTime = node.matches?.(switchQuery)
+        //   ? node
+        //   : node.querySelector?.(switchQuery)
           
-          if (switchTime) {
-            count++
+        //   if (switchTime) {
+        //     count++
 
-            if (count === 2) {
-              count = 0
-              handleexpirationByCandle()
-            }
-          }
+        //     if (count === 2) {
+        //       count = 0
+        //       handlers.expirationByCandle(true)
+        //     }
+        //   }
 
-          const input = node.matches?.('.section-deal__time .section-deal__input-control input')
-            ? node
-            : node.querySelector?.('.section-deal__time .section-deal__input-control input')
+        //   const input = node.matches?.('.section-deal__time .section-deal__input-control input')
+        //     ? node
+        //     : node.querySelector?.('.section-deal__time .section-deal__input-control input')
 
-          if (input) {
-            count++
+        //   if (input) {
+        //     count++
 
-            if (count === 2) {
-              count = 0
-              handleexpirationByCandle()
-            }
-          }
-        }
+        //     if (count === 2) {
+        //       count = 0
+        //       handlers.expirationByCandle(true)
+        //     }
+        //   }
+        // }
 
         // Notifications
         if (featureStates.priceNotificationNavigation) {
@@ -59,19 +59,11 @@ function loadEvent () {
 
         // deepDarkMode
         if (featureStates.deepDarkMode) {
-          const query = '.---react-features-Sidepanel-Settings-Theme-Item-styles-module__switch--MSldi'
+          const query = querys.deepDarkMode.themeOptions
           const themeOption = node.matches(query) ? node : node.querySelector(query)
 
           if (themeOption) {
-            document.querySelectorAll('.---react-features-Sidepanel-Settings-Theme-Item-styles-module__switch--MSldi').forEach((element, i) => {
-              if (i === 2) return
-              element.addEventListener('click', e => {
-                if (featureStates.deepDarkMode) {
-                  e.preventDefault()
-                }
-              })
-              element.title = `Desactiva la función "${features.deepDarkMode.name}" para poder cambiar entré los temas del Broker`
-            })
+            manageBrokerThemes()
           }
         }
       })
@@ -83,24 +75,39 @@ function loadEvent () {
     subtree: true
   })
 
-  document.addEventListener("keydown", (e) => {
-    if (!featureStates.keyboardShortcuts) return
-    
-    if (isNaN(+e.key) || e.key === '0' || !e.ctrlKey) return
-    e.preventDefault()
+  document.addEventListener("keydown", async (e) => {
+    if (featureStates.keyboardShortcuts) {
+      if ( e.key !== '0' && e.ctrlKey && !isNaN(+e.key)) {
+        e.preventDefault()
+  
+        const charts = document.querySelectorAll(querys.keyboardShortcuts.chartsOpen)
+        const chart = charts.item(+e.key - 1)
+  
+        if (chart) chart.click()
+      }
+    }
 
-    const charts = document.querySelectorAll('.---react-pages-TradePage-components-ChartPanel-TopCorner-Tabs-Tab-styles-module__container--xaCSj')
-    const chart = charts.item(+e.key - 1)
+    if (featureStates.timeframeHotkeys) {
+      if ( e.key !== '0' && e.altKey && !isNaN(+e.key)) {
+        e.preventDefault()
 
-    if (chart) chart.click()
+        const index = +e.key - 1
+        const timeFrame = await findAndClick(querys.timeframeHotkeys.timeFrameOptions, 1, index)
+
+        if (!timeFrame) {
+          await findAndClick(querys.timeframeHotkeys.settingsItems, undefined, 1)
+          await findAndClick(querys.timeframeHotkeys.timeFrameOptions, 30, index)
+        }
+      }
+    }
   })
 
 
   // Themes
   const observerHTMLClass = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
-      if (mutation.type === "attributes" && mutation.attributeName === "class" && !featureStates.deepDarkMode) {
-        chrome.runtime.sendMessage({ action: 'updateTheme', theme: mutation.target.className })
+      if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        updateBrokerTheme(mutation.target.className)
       }
     })
   })

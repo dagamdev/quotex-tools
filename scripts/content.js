@@ -10,63 +10,16 @@ window.addEventListener("load", loadEvent)
 document.addEventListener('visibilitychange', visibilitychange)
 
 /**
- * @param {keyof typeof features} feature 
- */
-function toggleFeature (feature) {
-  featureStates[feature] = !featureStates[feature]
-
-  addOrRemoveFeatureClass(feature)
-  handleexpirationByCandle()
-}
-
-async function handleexpirationByCandle () {
-  if (!featureStates.expirationByCandle) return
-  const inputValue = getInputTimeValue()
-  if (inputValue && inputValue.length < 6) return
-
-  await findAndClick('.section-deal__time .input-control__label__switch')
-  await findAndClick('.input-control__dropdown-option')
-
-  handleexpirationByCandle()
-}
-
-/**
- * 
  * @param {keyof typeof features} featureName
+ * @param {Boolean} newState
  */
-async function addOrRemoveFeatureClass (featureName) {
-  const feature = features[featureName]
-  
-  if (!feature.requireClass) return
-  const themeOptionsQuery = '.---react-features-Sidepanel-Settings-Theme-Item-styles-module__switch--MSldi'
+function toggleFeature (featureName, newState) {
+  const oldState = featureStates[featureName]
+  if (oldState === newState) return
 
-  if (featureStates[featureName]) {
-    document.body.classList.add(featureName)
+  toggleClasses(featureName, newState, oldState)
+  featureStates[featureName] = newState
 
-    // theme
-    if (featureName === 'deepDarkMode') {
-      const result = await findAndClick(themeOptionsQuery, 1, 2)
-
-      if (!result) {
-        const configButton = await findAndClick('.---react-features-Sidebar-styles-module__settingsButton--DT1hj', undefined, 2)
-        await findAndClick(themeOptionsQuery, undefined, 2)
-        configButton.click()
-      }
-    }
-  } else {
-    document.body.classList.remove(featureName)
-
-    // theme
-    if (featureName === 'deepDarkMode') {
-      const potionPosition = theme === 'dark' ? 1 : theme === 'light' ? 0 : 2
-      if (potionPosition === 2) return
-      const result = await findAndClick(themeOptionsQuery, 1, potionPosition)
-
-      if (!result) {
-        const configButton = await findAndClick('.---react-features-Sidebar-styles-module__settingsButton--DT1hj', undefined, 2)
-        await findAndClick(themeOptionsQuery, undefined, potionPosition)
-        configButton.click()
-      }
-    }
-  }
+  const handler = handlers[featureName]
+  if (handler) handler(newState, oldState)
 }

@@ -4,6 +4,6 @@
  */
 function visibilitychange () {
   if (document.visibilityState === 'visible') {
-    iniallice()
+    updateData()
   }
 }

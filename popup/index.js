@@ -12,7 +12,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
     if (result.featureStates) featureStates = result.featureStates
     theme = result.theme || 'black'
 
-    if (theme !== 'black') {
+    if (theme !== 'black' || featureStates.deepDarkMode) {
       document.body.classList.remove('black')
       document.body.classList.add(featureStates.deepDarkMode ? 'deepDarkMode' : theme)
     }
@@ -54,8 +54,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
 
-  const version = chrome.runtime.getManifest().version
-  document.getElementById("version").textContent = "v" + version
+  const { name, version } = chrome.runtime.getManifest()
+  document.getElementById('title').textContent = name
+  document.getElementById('version').textContent = 'v' + version
 })
 
 document.addEventListener('change', ev => {
@@ -70,9 +71,11 @@ document.addEventListener('change', ev => {
     if (id === 'deepDarkMode') {
       console.log(id, newValue, theme)
       if (newValue) {
-        document.body.className = 'deepDarkMode'
+        document.body.classList.add('deepDarkMode')
+        document.body.classList.remove(theme)
       } else {
-        document.body.className = theme
+        document.body.classList.add(theme)
+        document.body.classList.remove('deepDarkMode')
       }
     }
 
@@ -94,13 +97,10 @@ document.addEventListener('click', ev => {
   if (!ev.target instanceof HTMLInputElement) return
   const { id } = ev.target
 
-  console.log({id})
   if (id === 'toggleCompactMode') {
     compactMode = !compactMode
-    console.log('1', {compactMode})
 
     localStorageSet({ ['compactMode']: compactMode }, () => {
-      console.log('2', {compactMode})
       ev.target.textContent = compactMode ? 'Expandir' : 'Compactar'
       if (compactMode) {
         document.body.classList.add('compact')

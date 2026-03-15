@@ -71,14 +71,14 @@
 }
 
 .deepDarkMode {
-  --bg-color: #1a1a1a;
-  --border: #333;
-  --bg-secondary: #222222;
-  --hover-color: #0a0a0a;
+  --bg-color: #0f0f0f;      
+  --bg-secondary: #1a1a1a; 
+  --border: #2a2a2a;  
+  --hover-color: #242424;
 
   --sidebar-bg-color: var(--bg-color);
   --page-bg-color-0: var(--bg-color);
-  --page-bg-color-100: #161616;
+  --page-bg-color-100: #141414;
   --sidepanel-bg-dark: var(--bg-color);
 
   --sidebar-bg-button: var(--bg-secondary);
@@ -95,18 +95,14 @@
   --usermenu-bg-hover: var(--hover-color);
   --usermenu-bg-dropdown: var(--hover-color);
   --sidebar-bg-button-hover: var(--hover-color);
+  --color-white: var(--hover-color);
   
   --graph-tab-border: var(--border);
   --graph-tab-bg-hover: var(--border);
   --deal-list-tabs-bg: var(--border);
 
-  --graph-tab-box-shadow: -6px 0px 6px #0f0f0f;
+  --graph-tab-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   --chart-bg-button: hsla(0, 0%, 100%, .05);
-
-
-  .app {
-    background-color: var(--bg-color) !important;
-  }
 
   .---react-features-Sidepanel-Settings-Theme-Item-styles-module__slider--dBWCu {
     cursor: not-allowed;

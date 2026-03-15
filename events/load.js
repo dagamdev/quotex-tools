@@ -2,40 +2,12 @@ function loadEvent () {
   initialice()
 
   const observer = new MutationObserver((mutations) => {
-    const switchQuery = '.section-deal__time .input-control__label__switch'
-    let count = 0
-
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
         if (!(node instanceof HTMLElement)) return
 
-        // if (featureStates.expirationByCandle) {
-        //   const switchTime = node.matches?.(switchQuery)
-        //   ? node
-        //   : node.querySelector?.(switchQuery)
-          
-        //   if (switchTime) {
-        //     count++
-
-        //     if (count === 2) {
-        //       count = 0
-        //       handlers.expirationByCandle(true)
-        //     }
-        //   }
-
-        //   const input = node.matches?.('.section-deal__time .section-deal__input-control input')
-        //     ? node
-        //     : node.querySelector?.('.section-deal__time .section-deal__input-control input')
-
-        //   if (input) {
-        //     count++
-
-        //     if (count === 2) {
-        //       count = 0
-        //       handlers.expirationByCandle(true)
-        //     }
-        //   }
-        // }
+        console.log(node, node.parentElement)
+        console.log(node.outerHTML)
 
         // Notifications
         if (featureStates.priceNotificationNavigation) {

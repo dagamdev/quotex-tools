@@ -1,6 +1,6 @@
 'use strict'
 
-let tab
+let tab, compactMode = false
 const hosts = [
   'https://qxbroker.com'
 ]
@@ -8,9 +8,14 @@ const hosts = [
 chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
   tab = tabs[0]
 
-  localStorageGet(['featureStates', 'theme'], (result) => {
+  localStorageGet(['featureStates', 'theme', 'compactMode'], (result) => {
     if (result.featureStates) featureStates = result.featureStates
     theme = result.theme || 'black'
+
+    if (theme !== 'black') {
+      document.body.classList.remove('black')
+      document.body.classList.add(featureStates.deepDarkMode ? 'deepDarkMode' : theme)
+    }
 
     const container = document.querySelector('.container')
     featureKeys.forEach(key => {
@@ -34,7 +39,14 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       )
     })
 
-    document.body.classList.add(featureStates.deepDarkMode ? 'deepDarkMode' : theme)
+    updateActiveFeaturesCount()
+    if (result.compactMode) {
+      compactMode = result.compactMode
+      document.body.classList.add('compact')
+      document.getElementById('toggleCompactMode').textContent = compactMode ? 'Expandir' : 'Compactar'
+    }
+
+    document.body.classList.remove('hiden')
   })
 })
 
@@ -53,6 +65,7 @@ document.addEventListener('change', ev => {
   if (featureKeys.some(fk => fk === id)) {
     const newValue = ev.target.checked
     featureStates[id] = newValue
+    updateActiveFeaturesCount()
 
     if (id === 'deepDarkMode') {
       console.log(id, newValue, theme)
@@ -75,41 +88,33 @@ document.addEventListener('change', ev => {
       })
     })
   }
+})
 
-  if (id === 'toggle') {
-    ennable = !ennable
-    document.getElementById('toggleSpan').textContent = ennable ? 'Deshabilitar' : 'Habilitar'
-    
-    localStorageSet({ ['toggle']: ennable }, () => {
-      if (hosts.every(h => !tab.url.includes(h))) return
+document.addEventListener('click', ev => {
+  if (!ev.target instanceof HTMLInputElement) return
+  const { id } = ev.target
 
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function() {
-          toggleScript()
-        },
-        args: []
-      })
-    })
-  }
+  console.log({id})
+  if (id === 'toggleCompactMode') {
+    compactMode = !compactMode
+    console.log('1', {compactMode})
 
-  if (id === 'startDelay') {
-    const { value } = ev.target
-    if (!value) return
-
-    let startDelay = Number(value)
-    if (isNaN(startDelay)) startDelay = 0
-
-    localStorageSet({'startDelay': startDelay}, () => {
-      if (hosts.every(h => !tab.url.includes(h))) return
-
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function(value) {
-          updateStartDelay(value)
-        },
-        args: [startDelay]
-      })
+    localStorageSet({ ['compactMode']: compactMode }, () => {
+      console.log('2', {compactMode})
+      ev.target.textContent = compactMode ? 'Expandir' : 'Compactar'
+      if (compactMode) {
+        document.body.classList.add('compact')
+      } else {
+        document.body.classList.remove('compact')
+      }
     })
   }
 })
+
+function updateActiveFeaturesCount() {
+  const active = Object.values(featureStates).filter(Boolean).length
+  const total = featureKeys.length
+
+  const element = document.getElementById("activeFeaturesCount")
+  element.textContent = `${active} / ${total} funciones activas`
+}

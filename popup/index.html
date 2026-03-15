@@ -4,107 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quotex Tools</title>
-  <script src="../utils/variables.js" defer></script>
-  <script src="../utils/chrome.js" defer></script>
-  <script src="./index.js" defer></script>
+  <script src="../utils/chrome.js"></script>
+  <script src="../utils/variables.js"></script>
+  <script src="./index.js"></script>
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-  <div class="title-div">
-    <img src="../icon.png" alt="Logo" width="40" height="40">
-    <h1>Quotex Tools</h1>
-  </div>
+<body class="black hiden">
+  <header class="header">
+    <div class="title-div">
+      <img src="../icon.png" alt="Logo" width="40" height="40">
+      <h1>Quotex Tools</h1>
+    </div>
+    <div class="header-footer">
+      <div id="activeFeaturesCount" class="feature-count"></div>
+      <button id="toggleCompactMode" class="compact-btn">
+        Compactar
+      </button>
+    </div>
+  </header>
 
   <section class="container">
-    <!-- <article class="feature">
-      <div class="feature-info">
-        <div class="feature-title">Modo interfaz limpia</div>
-        <div class="feature-desc">
-          Oculta algunos paneles y elementos del broker para dejar el gráfico más limpio.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="cleanInterface">
-        <span class="slider"></span>
-      </label>
-    </article>
-
-    
-    <article class="feature">
-      <div class="feature-info">
-        <div class="feature-title">Expiración al cierre de vela</div>
-        <div class="feature-desc">
-          Ajusta automáticamente el tiempo de expiración a finalización de vela en 1m.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="expirationByCandle">
-        <span class="slider"></span>
-      </label>
-    </article>
-
-    
-    <article class="feature">
-      <div class="feature-info">
-        <div class="feature-title">Atajos de teclado para activos</div>
-        <div class="feature-desc">
-          Permite cambiar entre los activos abiertos usando atajos de teclado.
-          Usa <b>Ctrl + 1</b> para ir al primer activo y <b>Ctrl + 2</b> para el segundo etc.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="keyboardShortcuts">
-        <span class="slider"></span>
-      </label>
-    </article>
-
-    
-    <article class="feature">
-      <div class="feature-info">
-        <div class="feature-title">Modo super limpio (Backtesting)</div>
-        <div class="feature-desc">
-          Oculta casi todos los paneles del broker dejando solo el gráfico y los activos abiertos. Ideal para análisis o backtesting visual.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="superCleanMode">
-        <span class="slider"></span>
-      </label>
-    </article>
-
-    
-    <article class="feature disabled" title="En desarrollo">
-      <div class="feature-info">
-        <div class="feature-title">Bloqueo en últimos 30s de vela</div>
-        <div class="feature-desc">
-          Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="blockLast30sOfCandle" disabled>
-        <span class="slider"></span>
-      </label>
-    </article>
-
-    
-    <article class="feature">
-      <div class="feature-info">
-        <div class="feature-title">Navegar desde notificaciones</div>
-        <div class="feature-desc">
-          Permite hacer clic en las notificaciones de precio para abrir automáticamente el activo donde se generó la alerta.
-        </div>
-      </div>
-
-      <label class="switch">
-        <input type="checkbox" id="priceNotificationNavigation">
-        <span class="slider"></span>
-      </label>
-    </article> -->
   </section>
 
   <footer><span id="version">v1.0.0</span> • by Dagamdev</footer>

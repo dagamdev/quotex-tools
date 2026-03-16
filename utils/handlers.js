@@ -5,12 +5,12 @@ const handlers = {
   async expirationByCandle (newState, oldState = false) {
     if (!newState) return
 
-    await findAndClick('.section-deal__time .input-control__label__switch')
-    await findAndClick('.input-control__dropdown-option')
+    // await findAndClick('.section-deal__time .input-control__label__switch')
+    // await findAndClick('.input-control__dropdown-option')
+    await findAndClick('.GZg69.lp1E6')
+    // await findAndClick('.input-control__dropdown-option')
   },
-  async deepDarkMode (newState, oldState) {
-    // if (newState !== oldState) toggleClass('deepDarkMode')
-      
+  async deepDarkMode (newState, oldState) {      
     if (newState) {
       const result = await findAndClick(querys.deepDarkMode.themeOptions, 1, 2)
 

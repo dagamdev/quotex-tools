@@ -6,9 +6,6 @@ function loadEvent () {
       mutation.addedNodes.forEach(node => {
         if (!(node instanceof HTMLElement)) return
 
-        console.log(node, node.parentElement)
-        console.log(node.outerHTML)
-
         // Notifications
         if (featureStates.priceNotificationNavigation) {
           const query = '.notification-tracked-value'

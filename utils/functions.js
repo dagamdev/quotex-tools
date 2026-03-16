@@ -10,8 +10,10 @@ function initialice () {
       const handler = handlers[featureKey]
       if (handler) handler(state, false)
     })
+  
+    loadedPage = true
   })
-
+  
   updateBrokerTheme(document.documentElement.className)
 }
 
@@ -48,8 +50,9 @@ function manageBrokerThemes () {
  * @param {string} newTheme 
  */
 function updateBrokerTheme (newTheme) {
-  if (!featureStates.deepDarkMode) {
+  if (loadedPage && !featureStates.deepDarkMode) {
     theme = newTheme
+    console.log(theme, loadedPage, featureStates)
     chrome.runtime.sendMessage({ action: 'updateTheme', theme: newTheme })
   }
 }

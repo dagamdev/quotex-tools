@@ -1,5 +1,4 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log(message)
 
   if (message.action === 'getData') {
     chrome.storage.local.get([`featureStates`, 'theme'], (result) => {

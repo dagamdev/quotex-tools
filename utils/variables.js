@@ -77,4 +77,4 @@ featureKeys.forEach(key => {
 /** @type {'light' | 'dark' | 'black'} */
 let theme = 'black'
 
-let prevDeepDarkMode = false
+let prevDeepDarkMode = false, loadedPage = false

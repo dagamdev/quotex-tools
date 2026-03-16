@@ -1,9 +1,9 @@
 .cleanInterface, .superCleanMode {
-  .trading-chart__left {
+  .trading-chart__left, .app__sidebar, .MDytE {
     display: none !important;
   }
 
-  .trading-chart-settings {
+  .trading-chart-settings, .M6Rz0 {
     left: 0 !important;
   }
 
@@ -11,11 +11,11 @@
     padding: 0;
   }
 
-  .pair-information {
+  .pair-information, .MrYyj {
     display: none;
   }
 
-  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .trading-chart__indicators {
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .trading-chart__indicators, .ETWRI, .ydqvh {
     margin-left: 0;
   }
 
@@ -31,8 +31,8 @@
     }
   }
 
-  .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH {
-    left: 0;
+  .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH, .app__sidepanel {
+    left: 0 !important;
   }
 }
 
@@ -47,7 +47,7 @@
 }
 
 .hideMarketSentiment {
-  .trading-chart__left {
+  .trading-chart__left, .MDytE {
     display: none;
   }
 
@@ -55,11 +55,11 @@
     padding: 0;
   }
 
-  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .pair-information, .trading-chart__indicators {
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .pair-information, .trading-chart__indicators, .ETWRI, .MrYyj, .ydqvh {
     margin-left: 0;
   }
 
-  .trading-chart-settings {
+  .trading-chart-settings, .M6Rz0 {
     left: 0 !important;
   }
 }
@@ -80,18 +80,19 @@
   --page-bg-color-0: var(--bg-color);
   --page-bg-color-100: #141414;
   --sidepanel-bg-dark: var(--bg-color);
+  --popover-bg-item: var(--bg-color);
+  --graph-tab-bg-active: var(--bg-color);
 
   --sidebar-bg-button: var(--bg-secondary);
   --sidebar-bg-section: var(--bg-secondary);
+  --graph-tab-fixed-bg: var(--bg-secondary);
   --deal-list-bg: var(--bg-secondary);
   --graph-tab-bg: var(--bg-secondary);
-  --graph-tab-fixed-bg: var(--bg-secondary);
   --usermenu-bg: var(--bg-secondary);
   --header-notifications-bg: var(--bg-secondary);
   --deal-list-tab-bg-active: var(--bg-secondary);
   
   --header-notifications-bg-hover: var(--hover-color);
-  --graph-tab-bg-active: var(--hover-color);
   --usermenu-bg-hover: var(--hover-color);
   --usermenu-bg-dropdown: var(--hover-color);
   --sidebar-bg-button-hover: var(--hover-color);

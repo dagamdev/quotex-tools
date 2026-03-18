@@ -6,22 +6,24 @@ function loadEvent () {
       mutation.addedNodes.forEach(node => {
         if (!(node instanceof HTMLElement)) return
 
+        // console.log(node.parentElement, node, node.outerHTML)
+
         // Notifications
         if (featureStates.priceNotificationNavigation) {
-          const query = '.notification-tracked-value'
+          const query = querys.priceNotificationNavigation.notification
           const notification = node.matches(query) ? node : node.querySelector(query)
 
           if (notification) {
-            const assetName = notification.querySelector('.notification-tracked-value__header').children.item(1).textContent
-
+            const assetName = notification.querySelector(querys.priceNotificationNavigation.assetName).children.item(1).textContent
+            
             notification.addEventListener('click', (e) => {
               if (!featureStates.priceNotificationNavigation) return
-              if (e.target.closest('.notification-tracked-value__close')) return
+              if (e.target.closest(querys.priceNotificationNavigation.closeButton)) return
 
-              const asset = document.querySelector(`#${CSS.escape(assetName)} .---react-pages-TradePage-components-ChartPanel-TopCorner-Tabs-Tab-styles-module__container--xaCSj`)
+              const asset = document.querySelector(`#${CSS.escape(assetName)} .rKkq0`)
 
               asset?.click()
-              notification.querySelector('.notification-tracked-value__close')?.click()
+              notification.querySelector(querys.priceNotificationNavigation.closeButton)?.click()
             })
           }
         }

@@ -65,7 +65,7 @@
 }
 
 .priceNotificationNavigation {
-  .notification-tracked-value {
+  .notification-tracked-value, .iuQNi {
     cursor: pointer;
   }
 }

@@ -52,7 +52,6 @@ function manageBrokerThemes () {
 function updateBrokerTheme (newTheme) {
   if (loadedPage && !featureStates.deepDarkMode) {
     theme = newTheme
-    console.log(theme, loadedPage, featureStates)
     chrome.runtime.sendMessage({ action: 'updateTheme', theme: newTheme })
   }
 }

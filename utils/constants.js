@@ -14,5 +14,10 @@ const querys = {
     settingsItems: '.M6Rz0 .gmGcQ',
     // timeFrameOptions: '.popover-select__settings-time-item'
     timeFrameOptions: '.PY5Eb.FsAQf .blYud'
+  },
+  priceNotificationNavigation: {
+    notification: '.iuQNi',
+    assetName: '._UPSN',
+    closeButton: '.JvC_S',
   }
 }

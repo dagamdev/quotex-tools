@@ -19,5 +19,12 @@ const querys = {
     notification: '.iuQNi',
     assetName: '._UPSN',
     closeButton: '.JvC_S',
+  },
+  blockLast30sOfCandle: {
+    tradeButton: '#trade-button button'
+  },
+  payoutChangeAlerts: {
+    assetName: '.T4GAK',
+    assetPayout: '.Pg7a_'
   }
 }

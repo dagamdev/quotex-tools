@@ -105,7 +105,103 @@
   --graph-tab-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   --chart-bg-button: hsla(0, 0%, 100%, .05);
 
-  .---react-features-Sidepanel-Settings-Theme-Item-styles-module__slider--dBWCu {
+  .---react-features-Sidepanel-Settings-Theme-Item-styles-module__slider--dBWCu, .MSldi {
     cursor: not-allowed;
+  }
+}
+
+
+/* Notifications */
+
+.qt-notifications-container {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  z-index: 9999;
+}
+
+.qt-notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  max-width: 350px;
+  padding: 8px;
+
+  border-radius: 10px;
+  background: var(--deal-list-bg);
+
+  color: var(--trades-bg-title);
+  font-size: 13px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: qt-fade-in .8s ease forwards;
+  transition: background .5s ease;
+}
+
+.dark .qt-notification {
+  background-color: var(--page-bg-color-100);
+}
+
+/* Contenido */
+.qt-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icono */
+.qt-icon {
+  font-size: 14px;
+}
+
+/* Texto */
+.qt-title {
+  font-weight: 500;
+}
+
+.qt-desc {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Botón cerrar */
+.qt-close {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.qt-close:hover {
+  color: #fff;
+}
+
+/* Estados */
+.qt-notification.success {
+  border-left: 4px solid #22c55e; /* verde */
+}
+
+.qt-notification.danger {
+  border-left: 4px solid #ef4444; /* rojo */
+}
+
+/* Animación */
+@keyframes qt-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

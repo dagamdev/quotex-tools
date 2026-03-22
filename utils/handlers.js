@@ -34,6 +34,23 @@ const handlers = {
         configButton.click()
       }
     }
+  },
+  blockLast30sOfCandle (newState, oldState) {
+    if (newState !== oldState && !newState) {
+      document.querySelectorAll(querys.blockLast30sOfCandle.tradeButton).forEach(button => {
+        button.disabled = false
+      })
+    }
+  },
+  payoutChangeAlerts (newState, oldState) {
+    if (newState) {
+      document.body.insertAdjacentHTML('beforeend', '<div class="qt-notifications-container" />')
+      currentAssetName = document.querySelector('.page__sidebar .T4GAK')?.textContent ?? ''
+      currentAssetPayout = Number(document.querySelector('.page__sidebar .Pg7a_')?.textContent.slice(0, 2) ?? '0')
+    } else {
+      const notificationContainer = document.querySelector('.qt-notifications-container')
+      if (notificationContainer) notificationContainer.remove()
+    }
   }
 }
 

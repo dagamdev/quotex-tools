@@ -1,12 +1,12 @@
 function loadEvent () {
   initialice()
 
+  const timerClasses = ['KgDs6', 'RJgT7']
+
   const observer = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
         if (!(node instanceof HTMLElement)) return
-
-        // console.log(node.parentElement, node, node.outerHTML)
 
         // Notifications
         if (featureStates.priceNotificationNavigation) {
@@ -35,6 +35,18 @@ function loadEvent () {
 
           if (themeOption) {
             manageBrokerThemes()
+          }
+        }
+
+        // notification payout
+        if (featureStates.payoutChangeAlerts) {
+          const { assetName: assetNameClass, assetPayout: assetPayoutClass } = querys.payoutChangeAlerts
+          const assetName = node.matches(assetNameClass) ? node : node.querySelector(assetNameClass)
+          const assetPayout = node.matches(assetPayoutClass) ? node : node.querySelector(assetPayoutClass)
+
+          if (assetName && assetPayout) {
+            currentAssetName = assetName?.textContent ?? ''
+            currentAssetPayout = Number(assetPayout?.textContent.slice(0, 2) ?? '0')
           }
         }
       })
@@ -86,5 +98,45 @@ function loadEvent () {
   observerHTMLClass.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["class"]
+  })
+
+  const observerTimer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+      if (mutation.type !== "characterData") return
+
+      if (featureStates.blockLast30sOfCandle && mutation.target.parentElement.classList.contains(...timerClasses)) {
+        const seconds = +mutation.target.nodeValue.slice(6)
+
+        document.querySelectorAll(querys.blockLast30sOfCandle.tradeButton).forEach(button => {
+          const over29 = seconds >= 30
+          
+          if (over29 && !button.disabled) {
+            button.disabled = true
+          } else if (button.disabled && !over29) {
+            button.disabled = false
+          }
+        })
+      }
+
+      if (featureStates.payoutChangeAlerts && (!featureStates.superCleanMode) && mutation.target.parentElement.classList.contains('Pg7a_')) {
+        const newValue = +mutation.target.nodeValue
+        
+        if (newValue === currentAssetPayout) return
+        const assetName = mutation.target.parentElement.parentElement.querySelector('.T4GAK')?.textContent
+
+        if (currentAssetName !== assetName) {
+          currentAssetName = assetName
+        } else {
+          createNotification(newValue, assetName)
+        }
+        currentAssetPayout = newValue
+      }
+    })
+  })
+
+  observerTimer.observe(document.body, {
+    characterData: true,
+    childList: true,
+    subtree: true
   })
 }

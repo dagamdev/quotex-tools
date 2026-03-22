@@ -7,7 +7,7 @@
  */
 
 /**
- * @typedef {'cleanInterface' | 'expirationByCandle' | 'keyboardShortcuts' | 'superCleanMode' | 'priceNotificationNavigation' | 'deepDarkMode' | 'timeframeHotkeys'} FeatureKeys
+ * @typedef {'cleanInterface' | 'expirationByCandle' | 'blockLast30sOfCandle' | 'keyboardShortcuts' | 'superCleanMode' | 'priceNotificationNavigation' | 'deepDarkMode' | 'timeframeHotkeys' | 'payoutChangeAlerts'} FeatureKeys
  */
 
 /** @type {Record<FeatureKeys, Feature>} */
@@ -21,6 +21,11 @@ const features = {
   expirationByCandle: {
     name: '⏱️ Expiración al cierre de vela',
     description: 'Ajusta automáticamente el tiempo de expiración a finalización de vela en 1m.',
+    inDevelopment: false
+  },
+  blockLast30sOfCandle: {
+    name: '🔒 Bloqueo en últimos 30s de vela',
+    description: 'Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.',
     inDevelopment: false
   },
   keyboardShortcuts: {
@@ -53,13 +58,12 @@ const features = {
   },
   timeframeHotkeys: {
     name: '⏳ Atajos para temporalidades',
-    description: 'Permite cambiar la temporalidad del gráfico usando atajos de teclado. Usa <b>Alt + 1</b> para ir a 5s <b>Ctrl + 2</b> para 10s, etc.'
+    description: 'Permite cambiar la temporalidad del gráfico usando atajos de teclado. Usa <b>Alt + 1</b> para ir a 5s <b>Alt + 2</b> para 10s, etc.'
   },
-  // blockLast30sOfCandle: {
-  //   name: 'Bloqueo en últimos 30s de vela',
-  //   description: 'Deshabilita los botones de compra y venta durante los últimos 30 segundos de la vela actual para evitar operar en la siguiente vela, solo temporalidad de 1m.',
-  //   inDevelopment: true
-  // },
+  payoutChangeAlerts: {
+    name: '⚠️ Cambio de payout',
+    description: 'Notifica cuando el porcentaje de pago del activo cambia, permitiendo aprovechar mejores condiciones de trading.'
+  },
 }
 
 /**
@@ -77,4 +81,4 @@ featureKeys.forEach(key => {
 /** @type {'light' | 'dark' | 'black'} */
 let theme = 'black'
 
-let prevDeepDarkMode = false, loadedPage = false
+let prevDeepDarkMode = false, loadedPage = false, currentAssetName = '', currentAssetPayout = 0

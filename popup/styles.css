@@ -4,7 +4,6 @@
   font-size: medium;
 
   --green: #0faf59;
-  --white: #e2e8f0;
 }
 
 .light {
@@ -12,8 +11,8 @@
   --bg-secondary: #fafafa;
   --secondary-text: #616161;
   --hover: #e4e4e4;
-  color: #353a4d;
   --border: #4d4d4d;
+  --text-color: #353a4d;
 }
 
 .dark {
@@ -22,6 +21,7 @@
   --secondary-text: #a0a0a0;
   --hover: #282935;
   --border: #ffffff4d;
+  --text-color: #e2e8f0;
 }
 
 .black {
@@ -30,6 +30,7 @@
   --secondary-text: #a0a0a0;
   --hover: #282935;
   --border: #ffffff4d;
+  --text-color: #e2e8f0;
 }
 
 .deepDarkMode {
@@ -38,6 +39,7 @@
   --secondary-text: #a0a0a0;
   --hover: #242424;
   --border: #2a2a2a;  
+  --text-color: #e2e8f0;
 }
 
 html {
@@ -118,7 +120,7 @@ body{
   background: var(--bg-color);
   margin:0;
   padding:16px;
-  color: var(--white);
+  color: var(--text-color);
 }
 
 .container{
@@ -151,7 +153,7 @@ body{
 }
 
 .feature-info{
-  max-width:230px;
+  max-width: 250px;
 }
 
 .feature-title{
@@ -167,7 +169,7 @@ body{
 
   b {
     font-size: 12px;
-    color: var(--border);
+    color: var(--text-color);
   }
 }
 

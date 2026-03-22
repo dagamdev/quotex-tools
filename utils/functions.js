@@ -55,3 +55,51 @@ function updateBrokerTheme (newTheme) {
     chrome.runtime.sendMessage({ action: 'updateTheme', theme: newTheme })
   }
 }
+
+/**
+ * 
+ * @param {number} newValue 
+ * @param {string} assetName 
+ * @param {string} currentAssetName 
+ * @param {number} currentAssetPayout 
+ */
+function createNotification (newValue, assetName) {
+  const isOlder = newValue > currentAssetPayout
+  const container = document.querySelector(".qt-notifications-container")
+
+  const notification = document.createElement('div')
+  notification.className = `qt-notification ${isOlder ? 'success' : 'danger'}`
+  notification.innerHTML = `
+    <div class="qt-content">
+      <span class="qt-icon">${isOlder ? '🟢' : '🔴'}</span>
+      <div class="qt-text">
+        <div class="qt-title">${currentAssetName} ${isOlder ? 'subió' : 'bajó'} de ${currentAssetPayout}% a ${newValue}%</div>
+        <div class="qt-desc">${isOlder ? 'Mejor condición de pago' : 'Condición menos favorable'}</div>
+      </div>
+    </div>
+    <button class="qt-close">✕</button>
+  `
+
+  const delay = 5_000
+  let timeout = setTimeout(() => {
+    notification.remove()
+  }, delay)
+
+  const closeBtn = notification.querySelector('.qt-close')
+  closeBtn.addEventListener('click', () => {
+    clearTimeout(timeout)
+    notification.remove()
+  })
+
+  notification.addEventListener('mouseenter', () => {
+    clearTimeout(timeout)
+  })
+
+  notification.addEventListener('mouseleave', () => {
+    timeout = setTimeout(() => {
+      notification.remove()
+    }, delay)
+  })
+
+  container.appendChild(notification)
+}

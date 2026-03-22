@@ -69,7 +69,6 @@ document.addEventListener('change', ev => {
     updateActiveFeaturesCount()
 
     if (id === 'deepDarkMode') {
-      console.log(id, newValue, theme)
       if (newValue) {
         document.body.classList.add('deepDarkMode')
         document.body.classList.remove(theme)

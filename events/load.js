@@ -108,11 +108,11 @@ function loadEvent () {
         const seconds = +mutation.target.nodeValue.slice(6)
 
         document.querySelectorAll(querys.blockLast30sOfCandle.tradeButton).forEach(button => {
-          const over29 = seconds >= 30
+          const bloqued = seconds >= 30 && seconds < 59
           
-          if (over29 && !button.disabled) {
+          if (bloqued && !button.disabled) {
             button.disabled = true
-          } else if (button.disabled && !over29) {
+          } else if (button.disabled && !bloqued) {
             button.disabled = false
           }
         })

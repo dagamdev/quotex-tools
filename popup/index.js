@@ -1,14 +1,15 @@
 'use strict'
 
-let tab, compactMode = false
-const hosts = [
-  'https://qxbroker.com'
-]
+let compactMode = false
 
-chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
-  tab = tabs[0]
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded')
 
-  localStorageGet(['featureStates', 'theme', 'compactMode'], (result) => {
+  const { name, version } = chrome.runtime.getManifest()
+  document.getElementById('title').textContent = name
+  document.getElementById('version').textContent = 'v' + version
+
+  localStorageGet(null, (result) => {
     if (result.featureStates) featureStates = result.featureStates
     theme = result.theme || 'black'
 
@@ -50,15 +51,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
   })
 })
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded')
-
-  const { name, version } = chrome.runtime.getManifest()
-  document.getElementById('title').textContent = name
-  document.getElementById('version').textContent = 'v' + version
-})
-
 document.addEventListener('change', ev => {
   if (!ev.target instanceof HTMLInputElement) return
   const { id } = ev.target
@@ -79,14 +71,14 @@ document.addEventListener('change', ev => {
     }
 
     localStorageSet({ ['featureStates']: featureStates }, () => {
-      if (hosts.every(h => !tab.url.includes(h))) return
-
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function(featureName, isActive) {
-          toggleFeature(featureName, isActive)
-        },
-        args: [id, newValue]
+      chrome.tabs.query({ url: ["*://*.qxbroker.com/*"] }, (tabs) => {
+        tabs.forEach(tab => {
+          chrome.tabs.sendMessage(tab.id, {
+            type: 'UPDATE_FEATURE',
+            featureName: id,
+            newState: newValue
+          })
+        })
       })
     })
   }

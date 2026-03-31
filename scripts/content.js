@@ -9,17 +9,8 @@ for (const key in features) {
 window.addEventListener("load", loadEvent)
 document.addEventListener('visibilitychange', visibilitychange)
 
-/**
- * @param {keyof typeof features} featureName
- * @param {Boolean} newState
- */
-function toggleFeature (featureName, newState) {
-  const oldState = featureStates[featureName]
-  if (oldState === newState) return
-
-  toggleClasses(featureName, newState, oldState)
-  featureStates[featureName] = newState
-
-  const handler = handlers[featureName]
-  if (handler) handler(newState, oldState)
-}
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === 'UPDATE_FEATURE') {
+    toggleFeature(msg.featureName, msg.newState)
+  }
+});

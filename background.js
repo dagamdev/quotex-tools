@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   if (message.action === 'getData') {
-    chrome.storage.local.get([`featureStates`, 'theme'], (result) => {
+    chrome.storage.local.get(null, (result) => {
       sendResponse(result)
     })
 
@@ -14,6 +14,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.storage.local.set({['theme']: message.theme})
       }
     })
+
+    return true
+  }
+
+  if (message.action === 'updateData') {
+    chrome.storage.local.set(message.data, sendResponse)
 
     return true
   }

@@ -81,4 +81,4 @@ featureKeys.forEach(key => {
 /** @type {'light' | 'dark' | 'black'} */
 let theme = 'black'
 
-let prevDeepDarkMode = false, loadedPage = false, currentAssetName = '', currentAssetPayout = 0
+let prevDeepDarkMode = false, loadedPage = false, currentAssetName = '', currentAssetPayout = 0, compactMode = false

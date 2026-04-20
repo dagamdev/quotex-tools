@@ -34,3 +34,7 @@ async function findAndClick (query, attempts = 1000, index) {
     }
   }
 }
+
+function getModalPanel () {
+  return document.querySelector('.modal-panel-exq')
+}

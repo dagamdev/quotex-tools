@@ -2,6 +2,7 @@ function initialice () {
   chrome.runtime.sendMessage({ action: 'getData' }, (response) => {
     if (response.featureStates) featureStates = response.featureStates
     if (response.theme) theme = response.theme
+    if (response.compactMode) compactMode = response.compactMode
     
     featureKeys.forEach(featureKey => {
       const state = featureStates[featureKey]
@@ -20,7 +21,7 @@ function initialice () {
 function updateData () {
   chrome.runtime.sendMessage({ action: 'getData' }, (response) => {
     if (response.theme) theme = response.theme
-    
+    if (response.compactMode) compactMode = response.compactMode
     
     if (response.featureStates) {
       featureKeys.forEach(featureKey => {
@@ -58,6 +59,20 @@ function toggleFeature (featureName, newState) {
 
   const handler = handlers[featureName]
   if (handler) handler(newState, oldState)
+
+  const activeFeatures = Object.values(featureStates).filter(Boolean).length
+  const totalFeatures = featureKeys.length
+
+  const featuresCount = document.getElementById("activeFeaturesCount")
+  if (featuresCount){
+    featuresCount.textContent = `${activeFeatures} / ${totalFeatures} funciones activas`
+  }
+
+  const featureInput = document.getElementById(featureName)
+
+  if (featureInput) {
+    featureInput.checked = newState
+  }
 }
 
 /**
@@ -117,4 +132,11 @@ function createNotification (newValue, assetName) {
   })
 
   container.appendChild(notification)
+}
+
+function isFullscreen() {
+  return (
+    window.innerHeight >= screen.height &&
+    window.innerWidth >= screen.width
+  );
 }

@@ -1,7 +1,5 @@
 'use strict'
 
-let compactMode = false
-
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
 
@@ -51,38 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
-document.addEventListener('change', ev => {
-  if (!ev.target instanceof HTMLInputElement) return
-  const { id } = ev.target
-
-  if (featureKeys.some(fk => fk === id)) {
-    const newValue = ev.target.checked
-    featureStates[id] = newValue
-    updateActiveFeaturesCount()
-
-    if (id === 'deepDarkMode') {
-      if (newValue) {
-        document.body.classList.add('deepDarkMode')
-        document.body.classList.remove(theme)
-      } else {
-        document.body.classList.add(theme)
-        document.body.classList.remove('deepDarkMode')
-      }
-    }
-
-    localStorageSet({ ['featureStates']: featureStates }, () => {
-      chrome.tabs.query({ url: ["*://*.qxbroker.com/*"] }, (tabs) => {
-        tabs.forEach(tab => {
-          chrome.tabs.sendMessage(tab.id, {
-            type: 'UPDATE_FEATURE',
-            featureName: id,
-            newState: newValue
-          })
-        })
-      })
-    })
-  }
-})
+document.addEventListener('change', changeEvent)
 
 document.addEventListener('click', ev => {
   if (!ev.target instanceof HTMLInputElement) return
@@ -98,14 +65,14 @@ document.addEventListener('click', ev => {
       } else {
         document.body.classList.remove('compact')
       }
+      chrome.tabs.query({ url: ["*://*.qxbroker.com/*"] }, (tabs) => {
+        tabs.forEach(tab => {
+          chrome.tabs.sendMessage(tab.id, {
+            type: 'UPDATE_COMPACTMODE',
+            newState: compactMode
+          })
+        })
+      })
     })
   }
 })
-
-function updateActiveFeaturesCount() {
-  const active = Object.values(featureStates).filter(Boolean).length
-  const total = featureKeys.length
-
-  const element = document.getElementById("activeFeaturesCount")
-  element.textContent = `${active} / ${total} funciones activas`
-}

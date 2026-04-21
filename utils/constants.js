@@ -11,7 +11,7 @@ const querys = {
   },
   timeframeHotkeys: {
     // settingsItems: '.trading-chart-settings__item',
-    settingsItems: '.M6Rz0 .gmGcQ',
+    settingsItems: '.M6Rz0 .Wy5Or',
     // timeFrameOptions: '.popover-select__settings-time-item'
     timeFrameOptions: '.PY5Eb.FsAQf .blYud'
   },
@@ -24,7 +24,8 @@ const querys = {
     tradeButton: '#trade-button button'
   },
   payoutChangeAlerts: {
-    assetName: '.T4GAK',
-    assetPayout: '.Pg7a_'
+    actualPayoutClassName: 'bvdd_',
+    actualAssetName: '.lk0lD .xfLZW',
+    actualAssetPayout: '.lk0lD .bvdd_'
   }
 }

@@ -7,7 +7,7 @@ const handlers = {
 
     // await findAndClick('.section-deal__time .input-control__label__switch')
     // await findAndClick('.input-control__dropdown-option')
-    await findAndClick('.GZg69.lp1E6')
+    await findAndClick('.HMRlv .GZg69')
     // await findAndClick('.input-control__dropdown-option')
   },
   async deepDarkMode (newState, oldState) {      
@@ -45,8 +45,8 @@ const handlers = {
   payoutChangeAlerts (newState, oldState) {
     if (newState) {
       document.body.insertAdjacentHTML('beforeend', '<div class="qt-notifications-container" />')
-      currentAssetName = document.querySelector('.page__sidebar .T4GAK')?.textContent ?? ''
-      currentAssetPayout = Number(document.querySelector('.page__sidebar .Pg7a_')?.textContent.slice(0, 2) ?? '0')
+      currentAssetName = document.querySelector(querys.payoutChangeAlerts.actualAssetName)?.textContent ?? ''
+      currentAssetPayout = Number(document.querySelector(querys.payoutChangeAlerts.actualAssetPayout)?.textContent.slice(0, 2) ?? '0')
     } else {
       const notificationContainer = document.querySelector('.qt-notifications-container')
       if (notificationContainer) notificationContainer.remove()

@@ -34,14 +34,18 @@
   .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH, .app__sidepanel {
     left: 0 !important;
   }
+
+  .ETWRI {
+    margin-bottom: 8px;
+  }
 }
 
 .superCleanMode {
-  .page__sidebar, .page__header {
+  .page__sidebar, .page__header, .lk0lD, .I_0Xd {
     display: none;
   }
 
-  .page__body {
+  .page__body, main.CCT7v {
     max-height: 100vh !important;
   }
 }
@@ -91,6 +95,8 @@
   --usermenu-bg: var(--bg-secondary);
   --header-notifications-bg: var(--bg-secondary);
   --deal-list-tab-bg-active: var(--bg-secondary);
+  --chart-bg-panel: var(--bg-secondary);
+  --chart-bg-line: var(--bg-secondary);
   
   --header-notifications-bg-hover: var(--hover-color);
   --usermenu-bg-hover: var(--hover-color);
@@ -101,6 +107,7 @@
   --graph-tab-border: var(--border);
   --graph-tab-bg-hover: var(--border);
   --deal-list-tabs-bg: var(--border);
+  --chart-br-panel: var(--border);
 
   --graph-tab-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   --chart-bg-button: hsla(0, 0%, 100%, .05);

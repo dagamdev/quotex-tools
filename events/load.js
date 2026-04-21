@@ -40,7 +40,7 @@ function loadEvent () {
 
         // notification payout
         if (featureStates.payoutChangeAlerts) {
-          const { assetName: assetNameClass, assetPayout: assetPayoutClass } = querys.payoutChangeAlerts
+          const { actualAssetName: assetNameClass, actualAssetPayout: assetPayoutClass } = querys.payoutChangeAlerts
           const assetName = node.matches(assetNameClass) ? node : node.querySelector(assetNameClass)
           const assetPayout = node.matches(assetPayoutClass) ? node : node.querySelector(assetPayoutClass)
 
@@ -78,7 +78,7 @@ function loadEvent () {
         const timeFrame = await findAndClick(querys.timeframeHotkeys.timeFrameOptions, 1, index)
 
         if (!timeFrame) {
-          await findAndClick(querys.timeframeHotkeys.settingsItems, undefined, 1)
+          await findAndClick(querys.timeframeHotkeys.settingsItems)
           await findAndClick(querys.timeframeHotkeys.timeFrameOptions, 30, index)
         }
       }
@@ -118,11 +118,13 @@ function loadEvent () {
         })
       }
 
-      if (featureStates.payoutChangeAlerts && (!featureStates.superCleanMode) && mutation.target.parentElement.classList.contains('Pg7a_')) {
+      // Detecta cambios en el porcentaje de pago del activo actual para mostrar la notificacion.
+      if (featureStates.payoutChangeAlerts && (!featureStates.superCleanMode) && mutation.target.parentElement.classList.contains(querys.payoutChangeAlerts.actualPayoutClassName)) {
         const newValue = +mutation.target.nodeValue
         
         if (newValue === currentAssetPayout) return
-        const assetName = mutation.target.parentElement.parentElement.querySelector('.T4GAK')?.textContent
+        const assetNameClass = querys.payoutChangeAlerts.actualAssetName.split(' ')[1]
+        const assetName = mutation.target.parentElement.parentElement.querySelector(assetNameClass)?.textContent
 
         if (currentAssetName !== assetName) {
           currentAssetName = assetName

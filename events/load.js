@@ -60,13 +60,39 @@ function loadEvent () {
 
   document.addEventListener("keydown", async (e) => {
     if (featureStates.keyboardShortcuts) {
-      if ( e.key !== '0' && e.ctrlKey && !isNaN(+e.key)) {
-        e.preventDefault()
-  
-        const charts = document.querySelectorAll(querys.keyboardShortcuts.chartsOpen)
-        const chart = charts.item(+e.key - 1)
-  
-        if (chart) chart.click()
+      if (e.ctrlKey) {
+        if ( e.key !== '0' && !isNaN(+e.key)) {
+          e.preventDefault()
+    
+          const charts = document.querySelectorAll(querys.keyboardShortcuts.chartsOpen)
+          const chart = charts.item(+e.key - 1)
+    
+          if (chart) chart.click()
+        }
+
+        if (e.key == 'ArrowLeft') {
+          e.preventDefault()
+
+          const charts = document.querySelectorAll(querys.keyboardShortcuts.chartsOpen)
+          const chartIndex = Array.from(charts).findIndex(ch => ch.parentElement.id == 'tab-active')
+
+          const nextChartIndex = chartIndex - 1
+          const chart = charts.item(nextChartIndex < 0 ? charts.length - 1 : nextChartIndex)
+    
+          if (chart) chart.click()
+        }
+
+        if (e.key == 'ArrowRight') {
+          e.preventDefault()
+
+          const charts = document.querySelectorAll(querys.keyboardShortcuts.chartsOpen)
+          const chartIndex = Array.from(charts).findIndex(ch => ch.parentElement.id == 'tab-active')
+
+          const nextChartIndex = chartIndex + 1
+          const chart = charts.item(nextChartIndex >= charts.length ? 0 : nextChartIndex)
+    
+          if (chart) chart.click()
+        }
       }
     }
 

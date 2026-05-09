@@ -30,7 +30,7 @@ const features = {
   },
   keyboardShortcuts: {
     name: '⌨️ Atajos de teclado para activos',
-    description: `Permite cambiar entre los activos abiertos usando atajos de teclado. Usa <b>Ctrl + 1</b> para ir al primer activo y <b>Ctrl + 2</b> para el segundo etc.`,
+    description: `Permite cambiar entre los activos abiertos usando atajos de teclado. Usa <b>Ctrl + ➡️</b> para navegar a la derecha y <b>Ctrl + ⬅️</b> para navegar a la izquierda o puedes usar <b>Ctr + num</b>.`,
     inDevelopment: false
   },
   superCleanMode: {

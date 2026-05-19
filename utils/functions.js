@@ -136,7 +136,6 @@ function createNotification (newValue, assetName) {
 
 function isFullscreen() {
   return (
-    window.innerHeight >= screen.height &&
-    window.innerWidth >= screen.width
-  );
+    Math.round(window.innerHeight * window.devicePixelRatio) >= screen.height
+  )
 }

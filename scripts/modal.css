@@ -62,7 +62,7 @@
   padding: 15px;
   display: none;
   border-radius: 10px;
-  z-index: 9999;
+  z-index: 999;
   color: var(--text-color-exq);
   border: solid 1px var(--border-exq);
 
@@ -222,4 +222,85 @@ input:checked + .slider-exq{
 
 input:checked + .slider-exq:before{
   transform:translateX(20px);
+}
+
+
+/* Custom menu right click */
+#qex-custommenu {
+  z-index: 9999;
+  display: none;
+  position: absolute;
+
+  &.show {
+    display: block;
+  }
+
+  .items { 
+    display: flex;
+    background-color: var(--bg-color-exq);
+    color: var(--text-color-exq);
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid 1px var(--border-exq);
+    align-items: start;
+  }
+
+  button, .menu-item {
+    padding: 8px 12px;
+    width: 100%;
+    text-align: start;
+    cursor: pointer;
+  }
+
+  button:hover, .menu-item:hover {
+    background-color: var(--hover-exq);
+  }
+
+  hr {
+    width: calc(100% - 24px);
+    background-color: var(--text-color-exq);
+    margin: 8px 12px;
+  }
+
+  .toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+  }
+
+  .menu-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .switch {
+    width: 34px;
+    height: 18px;
+    border-radius: 999px;
+    background: #3a3a3a;
+    position: relative;
+    transition: 0.15s;
+  }
+
+  .switch-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: 0.15s;
+  }
+
+  .switch.active {
+    background: #22c55e;
+  }
+
+  .switch.active .switch-thumb {
+    left: 18px;
+  }
 }

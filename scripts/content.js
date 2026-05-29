@@ -11,6 +11,7 @@ document.addEventListener('visibilitychange', visibilitychange)
 window.addEventListener('resize', resizeEvent)
 document.addEventListener('click', clickEvent)
 document.addEventListener('change', changeEvent)
+document.addEventListener('contextmenu', contextmenuEvent)
 
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg.type === 'UPDATE_FEATURE') {

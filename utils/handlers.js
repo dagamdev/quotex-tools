@@ -51,6 +51,31 @@ const handlers = {
       const notificationContainer = document.querySelector('.qt-notifications-container')
       if (notificationContainer) notificationContainer.remove()
     }
+  },
+  async advancedContextMenu (newState, oldState) {
+    if (newState) {
+      const customMenu = document.createElement('div')
+      customMenu.id = 'qex-custommenu'
+
+      // <button id="savebtn">📸 Guardar imagen</button>
+      // <button id="copybtn">📋 Copiar imagen</button>
+      // <hr></hr>
+
+      customMenu.innerHTML = `
+        <div class="items">
+          <button id="horizontalline-menu-draw" data-index="1">Línea horizontal</button>
+          <button id="verticalline-menu-draw" data-index="6">Línea vertical</button>
+          <button id="trendline-menu-draw" data-index="9">Línea de tendencia</button>
+          <button id="rayo-menu-draw" data-index="19">Rayo</button>
+          <hr></hr>
+          <button id="setting-menu">⚙️ Configuración</button>
+        </div>
+      `
+      document.body.appendChild(customMenu)
+    } else {
+      const notificationContainer = document.querySelector('.qt-notifications-container')
+      if (notificationContainer) notificationContainer.remove()
+    }
   }
 }
 

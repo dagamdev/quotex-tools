@@ -27,5 +27,11 @@ const querys = {
     actualPayoutClassName: 'bvdd_',
     actualAssetName: '.lk0lD .xfLZW',
     actualAssetPayout: '.lk0lD .bvdd_'
+  },
+  advancedContextMenu: {
+    setting: '.c6IwW .PZgWV.yNjUW',
+    settingInput: '.c6IwW .PZgWV.yNjUW input',
+    drawButton: '.M6Rz0 .gmGcQ',
+    drawItem: '._99Cl .Zs0Hf li'
   }
 }

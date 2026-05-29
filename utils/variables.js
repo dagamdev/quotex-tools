@@ -7,7 +7,7 @@
  */
 
 /**
- * @typedef {'cleanInterface' | 'expirationByCandle' | 'blockLast30sOfCandle' | 'keyboardShortcuts' | 'superCleanMode' | 'priceNotificationNavigation' | 'deepDarkMode' | 'timeframeHotkeys' | 'payoutChangeAlerts'} FeatureKeys
+ * @typedef {'cleanInterface' | 'expirationByCandle' | 'blockLast30sOfCandle' | 'keyboardShortcuts' | 'superCleanMode' | 'priceNotificationNavigation' | 'deepDarkMode' | 'timeframeHotkeys' | 'payoutChangeAlerts' | 'advancedContextMenu'} FeatureKeys
  */
 
 /** @type {Record<FeatureKeys, Feature>} */
@@ -63,6 +63,10 @@ const features = {
   payoutChangeAlerts: {
     name: '⚠️ Cambio de payout',
     description: 'Notifica cuando el porcentaje de pago del activo cambia, permitiendo aprovechar mejores condiciones de trading.'
+  },
+  advancedContextMenu: {
+    name: '🖱️ Menú contextual avanzado',
+    description: 'Reemplaza el menú clic derecho del gráfico por uno personalizado con herramientas y accesos rápidos.'
   },
 }
 

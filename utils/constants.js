@@ -35,3 +35,22 @@ const querys = {
     drawItem: '._99Cl .Zs0Hf li'
   }
 }
+
+const LANG_LABELS = {
+  en: {
+    draws: {
+      horizontalLine: 'Horizontal line',
+      verticalLine: 'Vertical line',
+      trendLine: 'Trend Line',
+      ray: 'Ray'
+    }
+  },
+  es: {
+    draws: {
+      horizontalLine: 'Línea horizontal',
+      verticalLine: 'Línea vertical',
+      trendLine: 'Línea del trend',
+      ray: 'Rayo'
+    }
+  }
+}

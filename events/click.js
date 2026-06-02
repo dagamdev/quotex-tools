@@ -42,12 +42,31 @@ async function clickEvent (ev) {
   if (id.includes('menu-draw')) {
     const index = +ev.target.dataset.index
 
-    if (!isNaN(index)) {
-      const drawItem = await findAndClick(querys.advancedContextMenu.drawItem, 1, index)
 
-      if (!drawItem) {
+    if (!isNaN(index)) {
+      let drawItems = document.querySelectorAll(querys.advancedContextMenu.drawItem)
+      const lang = location.pathname.slice(1, 3)
+      const langDraws = LANG_LABELS[lang]?.draws
+
+      if (drawItems.length) {
+        if (drawItems){
+          ;[...drawItems].find(di => di.textContent.trim().toLowerCase() == langDraws[id.replace('-menu-draw', '')].toLowerCase())?.click()
+        } else {
+          drawItems[index]?.click()
+        }
+        
+        await findAndClick(querys.advancedContextMenu.drawButton, undefined)
+
+      } else {
         const drawsButton = await findAndClick(querys.advancedContextMenu.drawButton, undefined)
-        await findAndClick(querys.advancedContextMenu.drawItem, undefined, index)
+        drawItems = document.querySelectorAll(querys.advancedContextMenu.drawItem)
+
+        if (drawItems){
+          ;[...drawItems].find(di => di.textContent.trim().toLowerCase() == langDraws[id.replace('-menu-draw', '')].toLowerCase())?.click()
+        } else {
+          drawItems[index]?.click()
+        }
+
         drawsButton.click()
       }
     }

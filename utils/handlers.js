@@ -63,10 +63,10 @@ const handlers = {
 
       customMenu.innerHTML = `
         <div class="items">
-          <button id="horizontalline-menu-draw" data-index="1">Línea horizontal</button>
-          <button id="verticalline-menu-draw" data-index="6">Línea vertical</button>
-          <button id="trendline-menu-draw" data-index="9">Línea de tendencia</button>
-          <button id="rayo-menu-draw" data-index="19">Rayo</button>
+          <button id="horizontalLine-menu-draw" data-index="1">Línea horizontal</button>
+          <button id="verticalLine-menu-draw" data-index="6">Línea vertical</button>
+          <button id="trendLine-menu-draw" data-index="9">Línea de tendencia</button>
+          <button id="ray-menu-draw" data-index="19">Rayo</button>
           <hr></hr>
           <button id="setting-menu">⚙️ Configuración</button>
         </div>

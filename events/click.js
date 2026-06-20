@@ -36,7 +36,7 @@ async function clickEvent (ev) {
   }
 
   if (id === 'setting-menu') {
-    findAndClick(querys.deepDarkMode.configButton, 2, 2)
+    findAndClick(querys.advancedContextMenu.setting, 2)
   }
 
   if (id.includes('menu-draw')) {

@@ -45,6 +45,12 @@ const features = {
     inDevelopment: false,
     requireClass: true
   },
+  // advancedNotifications: {
+  //   name: '🔔 Notificaciones avanzadas',
+  //   description: 'Reemplaza las notificaciones de precio por notificaciones que permanecen visibles por más tiempo y permiten abrir automáticamente el activo relacionado.',
+  //   inDevelopment: false,
+  //   requireClass: true
+  // },
   deepDarkMode: {
     name: '🌙 Modo oscuro profundo',
     description: 'Aplica un tema aún más oscuro al broker para reducir el brillo y mejorar la concentración durante el trading.',

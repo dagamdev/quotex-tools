@@ -7,8 +7,30 @@ const handlers = {
 
     // await findAndClick('.section-deal__time .input-control__label__switch')
     // await findAndClick('.input-control__dropdown-option')
-    await findAndClick('.HMRlv .GZg69')
+    await findAndClick('.F7y_9 .oKKPh')
     // await findAndClick('.input-control__dropdown-option')
+  },
+  advancedNotifications (newState, oldState = false) {
+    if (newState) {
+      const notification = `
+        <div class="iuQNi">
+          <div class="JvC_S">
+            <svg class="icon-close"><use xlink:href="/profile/images/spritemap.svg#icon-close"></use></svg>
+          </div>
+          <div class="_UPSN">
+            <div class="flags PmHi6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 257" class="flag-gbp"><circle cx="128" cy="128" r="128" fill="#2e4ce5"></circle><mask id="a" width="256" height="256" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type: luminance;"><circle cx="128" cy="128" r="128" fill="#fff"></circle></mask><g fill="#91a0ec" fill-rule="evenodd" clip-rule="evenodd" mask="url(#a)"><path d="M132.671 1.317c46.252 22.533 69.995 71.799 69.995 126.923s-23.743 104.39-69.995 126.923l-9.343-19.179c36.949-18 58.005-58.335 58.005-107.744s-21.056-89.744-58.005-107.744z"></path><path d="M132.672 20.496c-36.949 18-58.005 58.335-58.005 107.744s21.056 89.744 58.005 107.744l-9.344 19.179C77.077 232.63 53.334 183.364 53.334 128.24S77.077 23.85 123.328 1.317z"></path><path d="M138.667 10.906v234.667h-21.334V10.906z"></path><path d="M245.333 138.907H10.667v-21.334h234.666z"></path><path d="M128 21.573c-58.91 0-106.667 47.756-106.667 106.667 0 58.91 47.757 106.666 106.667 106.666S234.667 187.15 234.667 128.24 186.91 21.573 128 21.573M0 128.24C0 57.547 57.308.24 128 .24s128 57.307 128 128c0 70.692-57.308 128-128 128S0 198.932 0 128.24"></path></g></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 257" class="flag-nzd"><circle cx="128" cy="128" r="128" fill="#2e4ce5"></circle><mask id="a" width="256" height="256" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type: luminance;"><circle cx="128" cy="128" r="128" fill="#fff"></circle></mask><g fill="#91a0ec" fill-rule="evenodd" clip-rule="evenodd" mask="url(#a)"><path d="M132.671 1.317c46.252 22.533 69.995 71.799 69.995 126.923s-23.743 104.39-69.995 126.923l-9.343-19.179c36.949-18 58.005-58.335 58.005-107.744s-21.056-89.744-58.005-107.744z"></path><path d="M132.672 20.496c-36.949 18-58.005 58.335-58.005 107.744s21.056 89.744 58.005 107.744l-9.344 19.179C77.077 232.63 53.334 183.364 53.334 128.24S77.077 23.85 123.328 1.317z"></path><path d="M138.667 10.906v234.667h-21.334V10.906z"></path><path d="M245.333 138.907H10.667v-21.334h234.666z"></path><path d="M128 21.573c-58.91 0-106.667 47.756-106.667 106.667 0 58.91 47.757 106.666 106.667 106.666S234.667 187.15 234.667 128.24 186.91 21.573 128 21.573M0 128.24C0 57.547 57.308.24 128 .24s128 57.307 128 128c0 70.692-57.308 128-128 128S0 198.932 0 128.24"></path></g></svg>
+            </div>
+            <div>GBP/NZD (OTC)</div>
+          </div>
+          <div>Precio alcanzado 1.90592</div>
+        </div>
+      `
+      document.body.insertAdjacentHTML('beforeend', `<div class="advancedNotificationList">${notification}</div>`)
+    } else {
+      const notificationContainer = document.querySelector('.advancedNotificationList')
+      if (notificationContainer) notificationContainer.remove()
+    }
   },
   async deepDarkMode (newState, oldState) {      
     if (newState) {
@@ -67,6 +89,7 @@ const handlers = {
           <button id="verticalLine-menu-draw" data-index="6">Línea vertical</button>
           <button id="trendLine-menu-draw" data-index="9">Línea de tendencia</button>
           <button id="ray-menu-draw" data-index="19">Rayo</button>
+          <button id="fibonacciRetracement-menu-draw" data-index="7">Retroceso de Fibonacci</button>
           <hr></hr>
           <button id="setting-menu">⚙️ Configuración</button>
         </div>

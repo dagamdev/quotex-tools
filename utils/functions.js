@@ -95,7 +95,12 @@ function updateBrokerTheme (newTheme) {
  */
 function createNotification (newValue, assetName) {
   const isOlder = newValue > currentAssetPayout
-  const container = document.querySelector(".qt-notifications-container")
+  let container = document.querySelector(".qt-notifications-container")
+
+  if (!container) {
+    document.body.insertAdjacentHTML('beforeend', '<div class="qt-notifications-container" />')
+    container = document.querySelector(".qt-notifications-container")
+  }
 
   const notification = document.createElement('div')
   notification.className = `qt-notification ${isOlder ? 'success' : 'danger'}`

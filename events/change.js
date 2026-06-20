@@ -1,3 +1,4 @@
+// Evento para detectar cuando se habilita o deshabilita una feature en el menu dentro de la pagina en pantalla completa
 /**
  * 
  * @param {Event} ev 

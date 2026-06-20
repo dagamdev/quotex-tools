@@ -1,5 +1,5 @@
 .cleanInterface, .superCleanMode {
-  .trading-chart__left, .app__sidebar, .MDytE {
+  .trading-chart__left, .app__sidebar, .NDp4c, header.rgx9T, .WwAfP {
     display: none !important;
   }
 
@@ -15,7 +15,7 @@
     display: none;
   }
 
-  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .trading-chart__indicators, .ETWRI, .ydqvh {
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .trading-chart__indicators, .xO39Y, .zCaxg {
     margin-left: 0;
   }
 
@@ -31,7 +31,7 @@
     }
   }
 
-  .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH, .app__sidepanel {
+  .---react-features-Sidepanel-styles-module__sidepanel--GIUEs.---react-features-Sidepanel-styles-module__bgBlack--y29PX.---react-features-Sidepanel-styles-module__active--qe_nH, .app__sidepanel, .NDbAT {
     left: 0 !important;
   }
 
@@ -45,13 +45,13 @@
     display: none;
   }
 
-  .page__body, main.CCT7v {
+  .page__body, .app__page main {
     max-height: 100vh !important;
   }
 }
 
 .hideMarketSentiment {
-  .trading-chart__left, .MDytE {
+  .trading-chart__left, .MDytE, .NDp4c {
     display: none;
   }
 
@@ -59,19 +59,51 @@
     padding: 0;
   }
 
-  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .pair-information, .trading-chart__indicators, .ETWRI, .MrYyj, .ydqvh {
+  .---react-pages-TradePage-components-ChartPanel-TopCorner-ServerTime-styles-module__wrapper--avpWc, .pair-information, .trading-chart__indicators, .xO39Y, .zCaxg {
     margin-left: 0;
   }
 
-  .trading-chart-settings, .M6Rz0 {
+  .trading-chart-settings, .NDbAT {
     left: 0 !important;
   }
 }
 
 .priceNotificationNavigation {
-  .notification-tracked-value, .iuQNi {
-    cursor: pointer;
+  .YaUZy {
+    cursor: pointer !important;
   }
+}
+ 
+.advancedNotifications {
+  .advancedNotificationList {
+    color: var(--color-black);
+    align-items: flex-start;
+    bottom: 50px;
+    flex-direction: row;
+    gap: 15px;
+    left: 50px;
+    margin-left: 50px;
+    position: absolute;
+    z-index: 5;
+
+    .iuQNi {
+      background-color: var(--color-white);
+      border-left: 6px solid #2b99ff;
+      border-radius: 8px;
+      box-shadow: 20px 20px 80px rgba(27, 31, 45, .6);
+      padding: 15px 20px;
+      position: relative;
+      width: 220px;
+    }
+  }
+
+  .jys3y .G4IKx {
+    display: none;
+  }
+}
+
+#trade-button button:disabled{
+  cursor: not-allowed !important;
 }
 
 .deepDarkMode {

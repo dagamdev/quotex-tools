@@ -6,33 +6,30 @@ const querys = {
     configButton: '.app__sidebar .DT1hj'
   },
   keyboardShortcuts: {
-    // chartsOpen: '.---react-pages-TradePage-components-ChartPanel-TopCorner-Tabs-Tab-styles-module__container--xaCSj'
-    chartsOpen: '.pPomf.yaDmv .rKkq0'
+    chartsOpen: '.dJ15T.vXMlv .ZyIJD'
   },
   timeframeHotkeys: {
-    // settingsItems: '.trading-chart-settings__item',
-    settingsItems: '.M6Rz0 .Wy5Or',
-    // timeFrameOptions: '.popover-select__settings-time-item'
-    timeFrameOptions: '.PY5Eb.FsAQf .blYud'
+    settingsItems: '.NDbAT .HgaSf',
+    timeFrameOptions: '.kCc27.e1H9g .Dy2a9'
   },
   priceNotificationNavigation: {
-    notification: '.iuQNi',
-    assetName: '._UPSN',
-    closeButton: '.JvC_S',
+    notification: '.JXrnX',
+    assetName: '.mAVms',
+    closeButton: '.XwI4U',
   },
   blockLast30sOfCandle: {
     tradeButton: '#trade-button button'
   },
   payoutChangeAlerts: {
-    actualPayoutClassName: 'bvdd_',
-    actualAssetName: '.lk0lD .xfLZW',
-    actualAssetPayout: '.lk0lD .bvdd_'
+    actualPayoutClassName: 'eB25d',
+    actualAssetName: '.lGE3t .paPcy',
+    actualAssetPayout: '.lGE3t .eB25d'
   },
   advancedContextMenu: {
-    setting: '.c6IwW .PZgWV.yNjUW',
+    setting: '.WL22O .zfXg7',
     settingInput: '.c6IwW .PZgWV.yNjUW input',
-    drawButton: '.M6Rz0 .gmGcQ',
-    drawItem: '._99Cl .Zs0Hf li'
+    drawButton: '.NDbAT .NNEiz',
+    drawItem: '.zWTva li.djZO1'
   }
 }
 
@@ -42,7 +39,8 @@ const LANG_LABELS = {
       horizontalLine: 'Horizontal line',
       verticalLine: 'Vertical line',
       trendLine: 'Trend Line',
-      ray: 'Ray'
+      ray: 'Ray',
+      fibonacciRetracement: 'Fibonacci Retracement'
     }
   },
   es: {
@@ -50,7 +48,8 @@ const LANG_LABELS = {
       horizontalLine: 'Línea horizontal',
       verticalLine: 'Línea vertical',
       trendLine: 'Línea del trend',
-      ray: 'Rayo'
+      ray: 'Rayo',
+      fibonacciRetracement: 'Retroceso de Fibonacci'
     }
   }
 }

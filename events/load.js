@@ -1,8 +1,6 @@
 function loadEvent () {
   initialice()
 
-  const timerClasses = ['KgDs6', 'RJgT7']
-
   const observer = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
@@ -14,13 +12,14 @@ function loadEvent () {
           const notification = node.matches(query) ? node : node.querySelector(query)
 
           if (notification) {
+            // console.log(node, node.outerHTML)
             const assetName = notification.querySelector(querys.priceNotificationNavigation.assetName).children.item(1).textContent
             
             notification.addEventListener('click', (e) => {
               if (!featureStates.priceNotificationNavigation) return
               if (e.target.closest(querys.priceNotificationNavigation.closeButton)) return
 
-              const asset = document.querySelector(`#${CSS.escape(assetName)} .rKkq0`)
+              const asset = document.querySelector(`#${CSS.escape(assetName)} .ZyIJD`)
 
               asset?.click()
               notification.querySelector(querys.priceNotificationNavigation.closeButton)?.click()
@@ -125,6 +124,8 @@ function loadEvent () {
     attributes: true,
     attributeFilter: ["class"]
   })
+
+  const timerClasses = ['jHgax']
 
   const observerTimer = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
